@@ -15,6 +15,7 @@
 from PyQt4 import QtCore
 from PyQt4.QtCore import Qt
 from PyQt4.QtGui import QGraphicsLinearLayout
+from PyQt4.QtGui import QSizePolicy
 from PyKDE4.plasma import Plasma
 from PyKDE4 import plasmascript
 
@@ -37,18 +38,15 @@ class XMonadLogPlasmoid(plasmascript.Applet):
 		global label
 
 		self.setHasConfigurationInterface(False)
-#		self.setAspectRatioMode(Plasma.Square)
-#
-#		self.theme = Plasma.Svg(self)
-#		self.theme.setImagePath("widgets/background")
-#		self.setBackgroundHints(Plasma.Applet.DefaultBackground)
+		self.setAspectRatioMode(Plasma.IgnoreAspectRatio)
+		self.setSizePolicy(QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding))
+		self.setMinimumWidth(425)
 
 		self.layout = QGraphicsLinearLayout(Qt.Horizontal, self.applet)
 		label = Plasma.Label(self.applet)
 		label.setText("Waiting for XMonad...")
 		self.layout.addItem(label)
 		self.applet.setLayout(self.layout)
-		#self.resize(500,125)
 
 		self.setup_dbus()
 		self.label_signal.connect(update_label)
