@@ -8,6 +8,8 @@ import DBus
 import DBus.Connection as DC
 import DBus.Message
 
+import qualified Codec.Binary.UTF8.String as UTF8
+
 main :: IO ()
 main =  withConnection Session $ \dbus -> do
     getWellKnownName dbus
@@ -34,7 +36,7 @@ getWellKnownName dbus = tryGetName `catchDyn` (\(DBus.Error _ _) -> getWellKnown
 dbusOutput :: DC.Connection -> String -> IO ()
 dbusOutput dbus str = do
     msg <- newSignal "/org/xmonad/Log" "org.xmonad.Log" "Update"
-    addArgs msg [String ("<b>" ++ str ++ "</b>")]
+    addArgs msg [String (UTF8.decodeString str)]
     -- If the send fails, ignore it.
     send dbus msg 0 `catchDyn` (\(DBus.Error _ _) -> return 0)
     return ()
