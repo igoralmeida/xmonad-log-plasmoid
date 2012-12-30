@@ -1,19 +1,21 @@
 # Xmonad Applet for KDE4 (Plasma)
 
-This is a fork of Igor Almeida's work at: git://gitorious.org/xmonad-log-plasmoid/xmonad-log-plasmoid.git
+This applet will print messages sent from XMonad's DBus-based logHook.
+The default dynamicLog message will show the non-empty workspaces, layout name and window title. An example `xmonad.hs` file is provided for experimentation.
 
-With this applet you can see your xmonad workspaces, layout name and window title in plasma panel.
+A similar implementation for the Gnome panel is [xmonad-log-applet](https://github.com/alexkay/xmonad-log-applet).
 
-This applet pipe log through dbus like [xmonad-log-applet](https://github.com/alexkay/xmonad-log-applet)
+# Installation
 
-# Main Improvements
+  * Edit your xmonad.hs, see `xmonad.hs` for an example
+  * In the root directory, run `make` and `make install`
+  * Add the `xmonad-log-plasmoid` widget to the panel
 
-  * BETTER DOCUMENT
-  * Auto expanding in panel
+# Known issues (patches/explanations welcome)
 
-# Install
+  * Removing and reinserting the widget crashes `plasma-desktop`. If this
+    happens, just insert it again and it should work
 
-  * Edit your xmonad.hs, see [xmonad.hs](https://github.com/janx/xmonad-log-plasmoid/blob/master/xmonad.hs) for example
-  * In repo directory, run `make` and `make install`
-  * Applet is already installed, choose xmonad-log-plasmoid applet and drag to panel
+# Acknowledgements
 
+  * [Janx's work](https://github.com/janx/xmonad-log-plasmoid).
