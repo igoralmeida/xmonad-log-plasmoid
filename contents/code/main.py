@@ -19,8 +19,6 @@ from PyQt4.QtGui import QSizePolicy
 from PyKDE4.plasma import Plasma
 from PyKDE4 import plasmascript
 
-import os
-import threading
 import dbus
 from dbus.mainloop.qt import DBusQtMainLoop
 

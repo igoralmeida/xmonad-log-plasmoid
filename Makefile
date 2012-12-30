@@ -7,5 +7,5 @@ install: ../xmonad-log-plasmoid.zip
 test:
 	plasmoidviewer xmonad-log-plasmoid
 
-clean:
+uninstall:
 	plasmapkg -r xmonad-log-plasmoid
